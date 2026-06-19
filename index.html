@@ -43,7 +43,7 @@
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
 
         <a class="button is-primary navbar-item" href="https://benjamin-greenland.github.io/benjamin-greenland.github.io/" style="background: linear-gradient(90deg, #1a5fff, #1efca7); border: none; color: white;">
-          <i class="fas fa-house"></i>
+          <i class="fas fa-home"></i>
         </a>
 
         <!-- Publications -->
@@ -396,7 +396,7 @@
     // Load and render publications from author page JSON
     async function loadPublications() {
       try {
-        const response = await fetch('https://benjamin-greenland.github.io/author_page.github.io/publications.json');
+        const response = await fetch('https://benjamin-greenland.github.io/benjamin-greenland.github.io/publications.json');
         const publications = await response.json();
         
         // Populate navbar dropdown
