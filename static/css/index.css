@@ -158,14 +158,14 @@ body {
 
 .gradient-text {
   font-size: 2em; /* Adjust the size as needed */
-  background: linear-gradient(to right, #1a5fff, #1efca7); /* Blue to green gradient */
+  background: linear-gradient(to right, #0437F2, #01eaff); /* Blue to green gradient */
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .gradient-text-small {
   font-size: 1em; /* Adjust the size as needed */
-  background: linear-gradient(to right, #1a5fff, #1efca7); /* Blue to green gradient */
+  background: linear-gradient(to right, #0437F2, #1efca7); /* Blue to green gradient */
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -176,7 +176,7 @@ body {
 
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(to right, #1a5fff, #1efca7) border-box;
+    linear-gradient(to right, #0437F2, #1efca7) border-box;
 
   color: inherit;   
   transition: all 0.3s ease;
@@ -188,10 +188,10 @@ body {
   background:
     linear-gradient(
       to right,
-      rgba(30, 144, 255, 0.1),
-      rgba(49, 226, 43, 0.1)
+       #0437F2, 
+       #1efca7
     ) padding-box,
-    linear-gradient(to right, #1a5fff, #1efca7) border-box;
+    linear-gradient(to right, #0437F2, #1efca7) border-box;
 
   color: white;
 }
