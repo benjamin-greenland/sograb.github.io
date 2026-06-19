@@ -43,7 +43,7 @@
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
 
         <a class="button is-primary navbar-item" href="https://benjamin-greenland.github.io/benjamin-greenland.github.io/" style="background: linear-gradient(90deg, #1a5fff, #1efca7); border: none; color: white;">
-          Author Profile
+          <i class="fas fa-house"></i>
         </a>
 
         <!-- Publications -->
@@ -51,10 +51,8 @@
           <a class="navbar-link">
             Publications
           </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://benjamin-greenland.github.io/sograb.github.io/">
-              SoGraB: A Visual Method for Soft Grasping Benchmarking and Evaluation
-            </a>
+          <div class="navbar-dropdown" id="navbar-publications">
+            <!-- Loaded dynamically from author page publications.json -->
           </div>
         </div>
       </div>
@@ -393,6 +391,32 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Load and render publications from author page JSON
+    async function loadPublications() {
+      try {
+        const response = await fetch('https://benjamin-greenland.github.io/author_page.github.io/publications.json');
+        const publications = await response.json();
+        
+        // Populate navbar dropdown
+        const navbarDropdown = document.getElementById('navbar-publications');
+        publications.forEach(pub => {
+          const link = document.createElement('a');
+          link.className = 'navbar-item';
+          link.href = pub.links.website;
+          link.target = '_blank';
+          link.textContent = `${pub.title}, ${pub.year}`;
+          navbarDropdown.appendChild(link);
+        });
+      } catch (error) {
+        console.error('Error loading publications:', error);
+      }
+    }
+    
+    // Load publications when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadPublications);
+  </script>
 
 </body>
 </html>
