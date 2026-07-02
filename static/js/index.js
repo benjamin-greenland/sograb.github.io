@@ -76,3 +76,55 @@ $(document).ready(function() {
     bulmaSlider.attach();
 
 })
+
+function setTheme(isDark) {
+  const body = document.body;
+  const button = document.getElementById('theme-toggle');
+  const icon = button.querySelector('i');
+
+  if (isDark) {
+    body.classList.add('dark-mode');
+    button.classList.remove('light');
+    button.classList.add('dark');
+    icon.className = 'fas fa-sun';
+  } else {
+    body.classList.remove('dark-mode');
+    button.classList.remove('dark');
+    button.classList.add('light');
+    icon.className = 'fas fa-moon';
+  }
+
+  localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const savedTheme = localStorage.getItem('siteTheme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const useDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+  setTheme(useDark);
+
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    setTheme(!document.body.classList.contains('dark-mode'));
+  });
+});
+
+// Load and render publications from author page JSON
+async function loadPublications() {
+  try {
+    const response = await fetch('https://benjamin-greenland.github.io/publications.json');
+    const publications = await response.json();
+    
+    // Populate navbar dropdown
+    const navbarDropdown = document.getElementById('navbar-publications');
+    publications.forEach(pub => {
+      const link = document.createElement('a');
+      link.className = 'navbar-item';
+      link.href = pub.links.website;
+      link.target = '_blank';
+      link.textContent = `${pub.title}, ${pub.year}`;
+      navbarDropdown.appendChild(link);
+    });
+  } catch (error) {
+    console.error('Error loading publications:', error);
+  }
+}
